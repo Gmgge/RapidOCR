@@ -6,7 +6,6 @@ from pathlib import Path
 from typing import List, Union
 
 import setuptools
-from get_pypi_latest_version import GetPyPiLatestVersion
 
 
 def read_txt(txt_path: Union[Path, str]) -> List[str]:
@@ -25,19 +24,7 @@ def get_readme():
 
 
 MODULE_NAME = "rapidocr"
-
-obtainer = GetPyPiLatestVersion()
-try:
-    latest_version = obtainer(MODULE_NAME)
-except Exception as e:
-    latest_version = "0.0.0"
-VERSION_NUM = obtainer.version_add_one(latest_version, add_patch=True)
-
-if len(sys.argv) > 2:
-    match_str = " ".join(sys.argv[2:])
-    matched_versions = obtainer.extract_version(match_str)
-    if matched_versions:
-        VERSION_NUM = matched_versions
+VERSION_NUM = "0.0.1"
 sys.argv = sys.argv[:2]
 
 project_urls = {
